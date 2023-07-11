@@ -1,8 +1,9 @@
 const { ValidationError, UniqueConstraintError } = require('sequelize')
 const { List } = require('../db/sequelize')
+const auth = require('../auth/auth')
 
 module.exports = (app) => {
-    app.put('/api/lists/:id', (req, res) => {
+    app.put('/api/lists/:id', auth,(req, res) => {
         const listId = req.params.id
         List.update({listTitle: req.body.listTitle}, {where: {id: listId}})
             .then(_ => { // on récupère la liste avec son id, si elle n'existe pas on affiche une erreur, sinon on affiche un succès

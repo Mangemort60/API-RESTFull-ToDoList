@@ -1,8 +1,9 @@
 const { ValidationError, UniqueConstraintError } = require('sequelize')
 const { Task } = require('../db/sequelize')
+const auth = require('../auth/auth')
 
 module.exports = (app) => {
-    app.put('/api/tasks/:id', (req, res) => {
+    app.put('/api/tasks/:id', auth,(req, res) => {
         const taskId = req.params.id
         Task.update({taskTitle: req.body.taskTitle}, {where: {id: taskId}})
             .then(_ => { // on récupère la tâche avec son id, si elle n'existe pas on affiche une erreur, sinon on affiche un succès

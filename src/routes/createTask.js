@@ -1,11 +1,13 @@
 const { Task } = require('../db/sequelize')
+const { ValidationError, UniqueConstraintError } = require('sequelize')
+const auth = require('../auth/auth')
 
 module.exports = (app) => {
-    app.post('/api/tasks/:id', (req, res) => {
+    app.post('/api/tasks/:id', auth, (req, res) => {
         const listId = req.params.id
         const taskData = {taskTitle: req.body.taskTitle, ListId: listId}
         console.log(taskData)
-        Task.create(taskData)
+      return  Task.create(taskData)
         .then( task => {
             const message = `La tâche ${task.taskTitle} a bien été crée`
             res.json({message, data: task})

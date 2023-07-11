@@ -1,6 +1,8 @@
 const { Sequelize, DataTypes } = require('sequelize')
 const ListModel = require('../model/List')
 const TaskModel = require('../model/Task')
+const UserModel = require('../model/User')
+// const bcrypt = require('bcrypt')
 
 
 // connection à la base de donnée
@@ -13,13 +15,21 @@ const sequelize = new Sequelize('todolist', 'root', '', {
     logging: false
 })
 
-// instance de List 
+// instance des models
 const List = ListModel(sequelize, DataTypes)
-// instance de Task 
 const Task = TaskModel(sequelize, DataTypes)
+const User = UserModel(sequelize, DataTypes)
 // associations
-List.hasMany(Task)
+List.hasMany(Task,{
+    onDelete: 'CASCADE',
+    foreignKey: 'ListId'
+})
 Task.belongsTo(List)
+User.hasMany(List, {
+    onDelete: 'CASCADE',
+    foreignKey: 'UserId'
+})
+List.belongsTo(User)
 
 // synchronisation 
 const InitDB = () => {
@@ -38,5 +48,5 @@ sequelize.authenticate()
     .catch(error => console.log(`Impossible de se connecter à la base de donnée ${error}`))
 
 module.exports = {
-    InitDB, List, Task
+    InitDB, List, Task, User
 }
