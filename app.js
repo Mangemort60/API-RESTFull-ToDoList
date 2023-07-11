@@ -11,6 +11,8 @@ app
 sequelize.InitDB();
 
 app.get('/', (req, res) => { res.send('Hello Express ')})
+
+
 require('./src/routes/createList')(app)
 require('./src/routes/createTask')(app)
 require('./src/routes/updateTask')(app)
