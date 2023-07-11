@@ -4,8 +4,8 @@
   "description": "A simple APIRest for a ToDoList",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start": "NODE_ENV=production & node app.js",
+    "dev": "NODE_ENV=development & nodemon app.js"
   },
   "author": "Hafid HADDAOUI",
   "license": "ISC",
@@ -19,7 +19,6 @@
     "validator": "^13.9.0"
   },
   "devDependencies": {
-    "morgan": "^1.10.0",
     "nodemon": "^2.0.22"
   }
 }

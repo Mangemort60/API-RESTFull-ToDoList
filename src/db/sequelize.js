@@ -2,18 +2,29 @@ const { Sequelize, DataTypes } = require('sequelize')
 const ListModel = require('../model/List')
 const TaskModel = require('../model/Task')
 const UserModel = require('../model/User')
-// const bcrypt = require('bcrypt')
 
+let sequelize;
 
-// connection à la base de donnée
-const sequelize = new Sequelize('todolist', 'root', '', {
-    host: 'localhost',
-    dialect: 'mariadb',
-    dialectOptions: {
-      timezone: 'Etc/GMT-2',
-    },
-    logging: false
+if(process.env.NODE_ENV === 'production') {
+     sequelize = new Sequelize('e4lw804sb77xt49d', 'amnllvae4682dovw', 'gsz3mplboad76m86', {
+        host: 'f80b6byii2vwv8cx.chr7pe7iynqr.eu-west-1.rds.amazonaws.com',
+        dialect: 'mariadb',
+        dialectOptions: {
+        timezone: 'Etc/GMT-2',
+        },
+        logging: false
 })
+} else {
+    sequelize = new Sequelize('todolist', 'root', '', {
+        host: 'localhost',
+        dialect: 'mariadb',
+        dialectOptions: {
+        timezone: 'Etc/GMT-2',
+        },
+        logging: false
+})
+}
+
 
 // instance des models
 const List = ListModel(sequelize, DataTypes)
