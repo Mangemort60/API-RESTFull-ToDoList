@@ -10,7 +10,7 @@ app
 
 sequelize.InitDB();
 
-app.get('/', (req, res) => { res.send('Hello Express ')})
+app.get('/', (req, res) => { res.json('Hello Express ')})
 
 
 require('./src/routes/createList')(app)
