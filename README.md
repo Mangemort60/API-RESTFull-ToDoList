@@ -1,5 +1,5 @@
 # API-RESTFull-ToDoList
-An complete API RESTFull for a ToDoList made with NodeJs and Express.
+A complete API RESTFull for a ToDoList made with NodeJs and Express.
 
 ## Features
 - A User must be authenticated to see his lists 
