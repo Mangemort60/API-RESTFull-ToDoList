@@ -12,3 +12,9 @@ Sequelize
 ## Security  
 - I used bcrypt for hashing User's password.
 - I used Jwt to secure User's authentication.
+
+## Deployment 
+- Heroku
+
+## Database
+- JawsMariaDB
