@@ -22,7 +22,8 @@ module.exports = (app) => {
             privateKey,
             { expiresIn: '24h'}
           )
-            
+         
+          res.setHeader('set-cookie', `token=${token}`)
           const message = `L'utilisateur a été connecté avec succès`;
           return res.json({ message, data: user, token })
         
