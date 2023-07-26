@@ -23,5 +23,9 @@ module.exports = (sequelize, DataTypes) => {
         createdAt: 'created',
         updatedAt: false
       })
+      
 }
 
+List.belongsTo(User, {
+    foreignKey: 'UserId',
+  });

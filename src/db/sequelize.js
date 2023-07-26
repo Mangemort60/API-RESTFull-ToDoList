@@ -36,11 +36,11 @@ List.hasMany(Task,{
     foreignKey: 'ListId'
 })
 Task.belongsTo(List)
-User.hasMany(List, {
-    onDelete: 'CASCADE',
-    foreignKey: 'UserId'
-})
-List.belongsTo(User)
+// User.hasMany(List, {
+//     onDelete: 'CASCADE',
+//     foreignKey: 'UserId'
+// })
+// List.belongsTo(User)
 
 // synchronisation 
 const InitDB = () => {

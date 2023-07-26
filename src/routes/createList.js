@@ -12,7 +12,7 @@ module.exports = (app) => {
                     res.status(400).json({message})
                 }
                 const listData = { listTitle: req.body.listTitle, UserId: userID}
-               return List.create(listData)
+                return List.create(listData)
                 .then( list => {
                     const message = `La liste ${req.body.listTitle} a bien été crée`
                     res.json({message, data: list})
