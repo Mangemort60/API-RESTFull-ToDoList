@@ -26,6 +26,3 @@ module.exports = (sequelize, DataTypes) => {
       
 }
 
-List.belongsTo(User, {
-    foreignKey: 'UserId',
-  });

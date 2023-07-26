@@ -17,7 +17,3 @@ module.exports = (sequelize, DataTypes) => {
     })
   }
 
-  User.hasMany(List, {
-    onDelete: 'CASCADE',
-    foreignKey: 'UserId',
-  });
