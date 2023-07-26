@@ -8,11 +8,7 @@ module.exports = (sequelize, DataTypes) => {
         listTitle: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-                notEmpty: {msg: 'Vous devez obligatoirement indiquer un titre pour cette liste'},
-                notNull : {msg: 'ce champs ne peut pas être null'}
-            }
-
+ 
         }
     },
     {
