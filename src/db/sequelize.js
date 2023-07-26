@@ -2,9 +2,6 @@ const { Sequelize, DataTypes } = require('sequelize')
 const ListModel = require('../model/List')
 const TaskModel = require('../model/Task')
 const UserModel = require('../model/User')
-const associations = require('./association')
-
-
 
 let sequelize;
 
@@ -29,26 +26,21 @@ if(process.env.NODE_ENV === 'production') {
 }
 
 
-
 // instance des models
 const List = ListModel(sequelize, DataTypes)
 const Task = TaskModel(sequelize, DataTypes)
 const User = UserModel(sequelize, DataTypes)
-
-
 // associations
-associations({ List, Task, User });
-
-// List.hasMany(Task,{
-//     onDelete: 'CASCADE',
-//     foreignKey: 'ListId'
-// })
-// Task.belongsTo(List)
-// User.hasMany(List, {
-//     onDelete: 'CASCADE',
-//     foreignKey: 'UserId'
-// })
-// List.belongsTo(User)
+List.hasMany(Task,{
+    onDelete: 'CASCADE',
+    foreignKey: 'ListId'
+})
+Task.belongsTo(List)
+User.hasMany(List, {
+    onDelete: 'CASCADE',
+    foreignKey: 'UserId'
+})
+List.belongsTo(User)
 
 // synchronisation 
 const InitDB = () => {
