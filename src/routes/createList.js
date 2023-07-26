@@ -20,7 +20,6 @@ module.exports = (app) => {
             })
 
             .catch(error => {
-
                 const message = `La liste n'a pas pu être ajouté. Réessayez dans quelques instant`
                 res.status(500).json({message, data:error})
             })
