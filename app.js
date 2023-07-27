@@ -22,6 +22,7 @@ require('./src/routes/deleteList')(app)
 require('./src/routes/deleteTask')(app)
 require('./src/routes/register')(app)
 require('./src/routes/findUserList')(app)
+require('./src/routes/getTasksList')(app)
 require('./src/routes/login')(app)
 
 app.listen(port, () => console.log(`L'application a bien démarré sur http://localhost:${port}`))
